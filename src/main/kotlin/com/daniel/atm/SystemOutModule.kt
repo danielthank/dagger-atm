@@ -4,10 +4,11 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-abstract class SystemOutModule {
+object SystemOutModule {
+    @JvmStatic
     @Provides
-    fun textOutputter() {
-        Outputter {
+    fun textOutputter(): Outputter {
+        return Outputter {
             println(it)
         }
     }

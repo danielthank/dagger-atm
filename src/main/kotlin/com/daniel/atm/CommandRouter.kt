@@ -19,11 +19,11 @@ class CommandRouter {
         val commandKey = splitInput[0]
         val command = commands[commandKey]
         command ?: return invalidCommand(input)
-        val status = command.handleInput(splitInput.subList(1, splitInput.size))
-        if (status === Command.Status.INVALID) {
+        val result = command.handleInput(splitInput.subList(1, splitInput.size))
+       if (result.status() === Command.Status.INVALID) {
             println("$commandKey: invalid arguments")
         }
-        return status
+        return result.status()
     }
 
     private fun invalidCommand(input: String): Command.Status {
