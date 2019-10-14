@@ -3,6 +3,15 @@ package com.daniel.atm
 import dagger.Module
 import dagger.Provides
 import java.math.BigDecimal
+import javax.inject.Qualifier
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class MinimumBalance
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class MaximumWithdrawal
 
 @Module
 object AmountsModule {
