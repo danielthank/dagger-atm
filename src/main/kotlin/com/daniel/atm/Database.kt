@@ -28,5 +28,9 @@ class Database @Inject constructor() {
         fun deposit(amount: BigDecimal) {
             balance += amount
         }
+
+        fun withdraw(amount: BigDecimal) {
+            balance -= amount
+        }
     }
 }
