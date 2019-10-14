@@ -1,6 +1,7 @@
 package com.daniel.atm
 
 import com.daniel.atm.deposit.DepositCommand
+import com.daniel.atm.logout.LogoutCommand
 import com.daniel.atm.withdraw.WithdrawCommand
 import dagger.Binds
 import dagger.Module
@@ -18,4 +19,9 @@ abstract class UserCommandsModule {
     @IntoMap
     @StringKey("withdraw")
     abstract fun withdrawCommand(command: WithdrawCommand): Command
+
+    @Binds
+    @IntoMap
+    @StringKey("logout")
+    abstract fun logoutCommand(command: LogoutCommand): Command
 }
