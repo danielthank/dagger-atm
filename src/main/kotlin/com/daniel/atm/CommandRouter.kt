@@ -28,6 +28,6 @@ class CommandRouter @Inject constructor(private val commands: Map<String, @JvmSu
 
     // Split on whitespace
     private fun split(input: String): List<String> {
-        return input.trim().split("\\s+")
+        return input.trim().split(Regex("\\s+"))
     }
 }

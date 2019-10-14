@@ -2,7 +2,7 @@ package com.daniel.atm
 
 abstract class SingleArgCommand : Command {
     override fun handleInput(input: List<String>): Command.Result {
-        return if (input.isEmpty()) handleArg("testUser") else Command.Result.invalid()
+        return if (input.size == 1) handleArg(input[0]) else Command.Result.invalid()
     }
 
     /** Handles the single argument to the command.  */
