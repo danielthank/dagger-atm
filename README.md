@@ -18,3 +18,10 @@ Dagger will generate a class that implements the component type. The generated t
 - `@IntoMap` and `@IntoSet` are both ways of introducing what is often called “multibindings”, where a collection contains elements from several different binding methods.
 - `@Singleton` instructs Dagger to create only one instance of the type for each instance of the component.
   It can be used on the class declaration of a type that has an `@Inject` constructor, or on a `@Binds` or `@Provides` method.
+- `@Subcomponent` is, like a `@Component` one, a factory for an object.
+  Like `@Component`, it uses modules to give Dagger implementation instructions.
+  Subcomponents always have a parent component (or a parent subcomponent), and any objects that are requestable in the parent are requestable in the child, but not vice versa.
+- `@Subcomponent.Factory` creates instances of the subcomponent. An instance of it is requestable in the parent component.
+  - There is a parallel annotation, `@Component.Factory`, for `@Component`.
+- `@BindsInstance` parameters let you make arbitrary objects requestable by other binding methods in the component.
+
