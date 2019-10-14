@@ -27,3 +27,5 @@ Dagger will generate a class that implements the component type. The generated t
 - `@Qualifier` annotations are used to differentiate between instances of the same type that are unrelated.
   Contrast this with `@IntoSet` and `@IntoMap`, where the collected objects are used together.
 - `@Qualifiers` are often, but certainly not always, used with common data types such as primitive types and String, which may be used in many places in a program for very different reasons.
+- When Dagger creates sets or maps of objects, the set or map will contain all values from any parent component(s) in addition to the values that are installed by bindings in the component itself.
+- `@BindsOptionalOf` tells Dagger that it can construct instances of `Optional<ReturnType>`. The presence of the Optional is determined by whether Dagger knows how to create an instance of ReturnType, and it can be present in a subcomponent but absent in its parent.
