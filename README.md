@@ -24,4 +24,6 @@ Dagger will generate a class that implements the component type. The generated t
 - `@Subcomponent.Factory` creates instances of the subcomponent. An instance of it is requestable in the parent component.
   - There is a parallel annotation, `@Component.Factory`, for `@Component`.
 - `@BindsInstance` parameters let you make arbitrary objects requestable by other binding methods in the component.
-
+- `@Qualifier` annotations are used to differentiate between instances of the same type that are unrelated.
+  Contrast this with `@IntoSet` and `@IntoMap`, where the collected objects are used together.
+- `@Qualifiers` are often, but certainly not always, used with common data types such as primitive types and String, which may be used in many places in a program for very different reasons.
