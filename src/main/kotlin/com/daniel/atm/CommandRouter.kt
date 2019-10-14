@@ -2,14 +2,7 @@ package com.daniel.atm
 
 import javax.inject.Inject
 
-class CommandRouter {
-
-    private val commands = mutableMapOf<String, Command>()
-
-    @Inject
-    constructor(command: Command) {
-        commands[command.key()] = command
-    }
+class CommandRouter @Inject constructor(private val commands: Map<String, @JvmSuppressWildcards Command>) {
 
     fun route(input: String): Command.Status {
         val splitInput = split(input)
@@ -20,7 +13,7 @@ class CommandRouter {
         val command = commands[commandKey]
         command ?: return invalidCommand(input)
         val result = command.handleInput(splitInput.subList(1, splitInput.size))
-       if (result.status() === Command.Status.INVALID) {
+        if (result.status() === Command.Status.INVALID) {
             println("$commandKey: invalid arguments")
         }
         return result.status()
