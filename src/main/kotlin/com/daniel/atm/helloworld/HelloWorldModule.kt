@@ -1,8 +1,8 @@
 package com.daniel.atm.helloworld
 
+import com.daniel.atm.Command
 import dagger.Binds
 import dagger.Module
-import com.daniel.atm.Command
 import dagger.multibindings.IntoMap
 import dagger.multibindings.StringKey
 

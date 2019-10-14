@@ -7,15 +7,14 @@ import java.math.BigDecimal
 import javax.inject.Inject
 
 class DepositCommand @Inject constructor(
-    private val database: Database,
+    private val account: Database.Account,
     private val outputter: Outputter
 ) : Command {
     override fun handleInput(input: List<String>): Command.Result {
-        if (input.size != 2) {
+        if (input.size != 1) {
             return Command.Result.invalid()
         }
-        val account = database.getAccount(input[0])
-        account.deposit(BigDecimal(input[1]))
+        account.deposit(BigDecimal(input[0]))
         outputter.output("${account.username()} now has ${account.balance()}")
         return Command.Result.handled()
     }

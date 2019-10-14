@@ -1,16 +1,17 @@
 package com.daniel.atm.login
 
-import com.daniel.atm.Command
-import com.daniel.atm.Database
-import com.daniel.atm.Outputter
-import com.daniel.atm.SingleArgCommand
+import com.daniel.atm.*
 import javax.inject.Inject
 
 class LoginCommand @Inject
-constructor(private val database: Database, private val outputter: Outputter) : SingleArgCommand() {
-    override fun handleArg(arg: String): Command.Result {
-        val account = database.getAccount(arg)
-        outputter.output("$arg is logged in with balance: ${account.balance()}")
-        return Command.Result.handled()
+constructor(
+    private val database: Database,
+    private val outputter: Outputter,
+    private val userCommandsRouterFactory: UserCommandsRouter.Factory
+) : SingleArgCommand() {
+    override fun handleArg(str: String): Command.Result {
+        val account = database.getAccount(str)
+        outputter.output("$str is logged in with balance: ${account.balance()}")
+        return Command.Result.enterNestedCommandSet(userCommandsRouterFactory.create(account).router())
     }
 }

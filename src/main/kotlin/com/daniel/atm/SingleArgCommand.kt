@@ -6,5 +6,5 @@ abstract class SingleArgCommand : Command {
     }
 
     /** Handles the single argument to the command.  */
-    protected abstract fun handleArg(arg: String): Command.Result
+    protected abstract fun handleArg(str: String): Command.Result
 }

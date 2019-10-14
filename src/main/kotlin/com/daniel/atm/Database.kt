@@ -3,7 +3,6 @@ package com.daniel.atm
 import java.math.BigDecimal
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.collections.HashMap
 
 @Singleton
 class Database @Inject constructor() {
