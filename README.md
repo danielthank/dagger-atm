@@ -16,3 +16,5 @@ Dagger will generate a class that implements the component type. The generated t
 - `@IntoMap` allows for the creation of a map with values of a specific type, with keys set using special annotations such as @StringKey or @IntKey. Because keys are set via annotation, Dagger ensures that multiple values are not mapped to the same key.
 - `@IntoSet` allows for the creation of a set of types to be collected together. It can be used together with `@Binds` and `@Provides` methods to provide a Set<ReturnType>.
 - `@IntoMap` and `@IntoSet` are both ways of introducing what is often called “multibindings”, where a collection contains elements from several different binding methods.
+- `@Singleton` instructs Dagger to create only one instance of the type for each instance of the component.
+  It can be used on the class declaration of a type that has an `@Inject` constructor, or on a `@Binds` or `@Provides` method.

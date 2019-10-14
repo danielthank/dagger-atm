@@ -2,9 +2,10 @@ package com.daniel.atm
 
 import java.math.BigDecimal
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.collections.HashMap
 
-
+@Singleton
 class Database @Inject constructor() {
     private val accounts = HashMap<String, Account>()
 
@@ -15,7 +16,7 @@ class Database @Inject constructor() {
     }
 
     class Account(private val username: String) {
-        private val balance = BigDecimal.ZERO
+        private var balance = BigDecimal.ZERO
 
         fun username(): String {
             return username
@@ -23,6 +24,10 @@ class Database @Inject constructor() {
 
         fun balance(): BigDecimal {
             return balance
+        }
+
+        fun deposit(amount: BigDecimal) {
+            balance += amount
         }
     }
 }
